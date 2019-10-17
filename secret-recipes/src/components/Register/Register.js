@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { Link } from 'react-router-dom';
 
 const Register = props => {
   const [values, setValues] = useState({
@@ -22,7 +23,7 @@ const Register = props => {
       .then(res => {
         console.log(res)
         localStorage.setItem('token', res.data.token)
-        //redirect to login page to login
+        props.history.push('/login')
         setValues({
           username: "",
           password: ""
@@ -33,6 +34,7 @@ const Register = props => {
 
   return (
     <div>
+      <h1>Register!</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -50,6 +52,7 @@ const Register = props => {
         />
         <button type="submit">Register!</button>
       </form>
+      <Link to="login"><p>Already have an account? Login!</p></Link>
     </div>
   )
 }

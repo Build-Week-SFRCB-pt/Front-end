@@ -15,8 +15,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
-        <TabNav />
-        <Route exact path="/" component={Login} />
+        {/* <TabNav /> */}
+        <Route exact path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <PrivateRoute exact path="/recipes" component={RecipeList} />
         <Route />
