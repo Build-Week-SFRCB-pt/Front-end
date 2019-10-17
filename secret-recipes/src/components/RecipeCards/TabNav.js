@@ -11,15 +11,11 @@ const createLabel = (iconName, labelText) => (
   </span>
 );
 
-const homeLabel = createLabel("home", "Home");
 const recipeLabel = createLabel("heart", "Recipes");
 const aboutLabel = createLabel("question circle", "About");
 const signinLabel = createLabel("sign in", "Sign in");
 
 const panes = [
-  {
-    menuItem: <Menu.Item key="home" as={Nav} to={`/`} content={homeLabel} />
-  },
   {
     menuItem: (
       <Menu.Item

@@ -18,7 +18,7 @@ const Login = props => {
       .then(res => {
         console.log(res)
         localStorage.setItem('token', res.data.token)
-        //redirect to recipe page when you login
+        props.history.push('/recipes')
         setValues({
           username: "",
           password: ""
