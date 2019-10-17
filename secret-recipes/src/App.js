@@ -5,6 +5,7 @@ import TabNav from "./components/RecipeCards/TabNav.js";
 import { BrowserRouter } from "react-router-dom";
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
+import RecipeList from './components/Recipes/RecipeList';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <TabNav />
         <Register />
         <Login />
+        <RecipeList />
       </BrowserRouter>
     </div>
   );

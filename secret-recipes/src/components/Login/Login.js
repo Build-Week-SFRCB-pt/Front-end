@@ -19,6 +19,10 @@ const Login = props => {
         console.log(res)
         localStorage.setItem('token', res.data.token)
         //redirect to recipe page when you login
+        setValues({
+          username: "",
+          password: ""
+        })
       })
       .catch(err => console.log(err))
   }
