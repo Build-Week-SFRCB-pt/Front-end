@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import Register from './components/Register/Register';
-import RecipeList from './components/Recipes/RecipeList';
+import Header from "./components/RecipeCards/Header.js";
+import TabNav from "./components/RecipeCards/TabNav.js";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      Hello
-      <Register />
+    <div>
+      <BrowserRouter>
+        <Header />
+        <TabNav />
+      </BrowserRouter>
     </div>
   );
 }
