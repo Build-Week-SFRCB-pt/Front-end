@@ -1,18 +1,20 @@
 import React from 'react';
-import './App.css';
+//import './App.css';
 import Header from "./components/RecipeCards/Header.js";
 import TabNav from "./components/RecipeCards/TabNav.js";
 import { BrowserRouter } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
-        <TabNav />
+        <main>
+          <Header />
+          <TabNav />
+        </main>
       </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+
