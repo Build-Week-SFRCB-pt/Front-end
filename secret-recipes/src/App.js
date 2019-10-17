@@ -3,6 +3,9 @@ import './App.css';
 import Header from "./components/RecipeCards/Header.js";
 import TabNav from "./components/RecipeCards/TabNav.js";
 import { BrowserRouter } from "react-router-dom";
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+
 
 function App() {
   return (
@@ -10,6 +13,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <TabNav />
+        <Register />
+        <Login />
       </BrowserRouter>
     </div>
   );
