@@ -8,7 +8,6 @@ import {
 
 const initialState = {
   recipes: [],
-  currentUser: {},
   isFetching: false
 }
 

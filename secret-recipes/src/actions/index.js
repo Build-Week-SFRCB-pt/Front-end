@@ -5,18 +5,12 @@ export const FETCHING_RECIPES_START = "FETCHING_RECIPES_START"
 export const FETCHING_RECIPES_SUCCESS = "FETCHING_RECIPES_SUCCESS"
 export const FETCHING_RECIPES_FAIL = "FETCHING_RECIPES_FAIL"
 
-export const getRecipes = token => dispatch => {
-  // localStorage.setItem('token', token)
+export const getRecipes = () => dispatch => {
   dispatch({ type: FETCHING_RECIPES_START })
   axiosWithAuth()
-    .get('https://lambdaschool-cookbook2.herokuapp.com/recipes', {
-      headers: {
-        Authorization: token
-      }
-    }
-    )
+    .get('https://lambdaschool-cookbook2.herokuapp.com/recipes')
     .then(res => {
-      console.log("something", res)
-      dispatch({ type: FETCHING_RECIPES_SUCCESS, payload: res.data })
+      console.log("something", res.data)
+      dispatch({ type: FETCHING_RECIPES_SUCCESS, payload: res.data.recipes })
     })
 }

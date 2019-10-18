@@ -15,14 +15,13 @@ export default function App() {
     <div>
       <BrowserRouter>
         <main>
-        <Header />
-        {/* <TabNav /> */}
+          <Header />
+          <Route exact path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <PrivateRoute exact path="/recipes" component={RecipeList} />
+          <Route />
+          <Route />
         </main>
-        <Route exact path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <PrivateRoute exact path="/recipes" component={RecipeList} />
-        <Route />
-        <Route />
       </BrowserRouter>
     </div>
   );

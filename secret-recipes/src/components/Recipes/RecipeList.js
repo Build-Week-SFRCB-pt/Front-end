@@ -5,17 +5,23 @@ import '../../App.css';
 import TabNav from '../RecipeCards/TabNav';
 
 const RecipeList = ({ getRecipes, recipes }) => {
-  // useEffect(() => {
-  //   getRecipes()
-  // }, [getRecipes])
+
+  useEffect(() => {
+    getRecipes()
+  }, [getRecipes])
   return (
     <div className="App">
-      {/* {recipes.map(recipe => (
-        <div>
-          <p>{recipe.name}</p>
-        </div>
-      ))} */}
       <TabNav />
+      {recipes.map(recipe => (
+        <div key={recipe.id}>
+          <p>{recipe.title}</p>
+          <p>{recipe.source}</p>
+          <p>{recipe.notes}</p>
+          <ul>{recipe.tags.map(tag => (
+            <li>{tag}</li>
+          ))}</ul>
+        </div>
+      ))}
       Recipe List
     </div>
   );
