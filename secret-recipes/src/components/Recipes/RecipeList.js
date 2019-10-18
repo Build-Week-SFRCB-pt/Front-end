@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipes } from '../../actions/index';
-import '../../App.css';
+import './Recipes.css'
 import TabNav from '../RecipeCards/TabNav';
+import Recipe from './Recipe';
 
 const RecipeList = ({ getRecipes, recipes }) => {
 
@@ -10,19 +11,13 @@ const RecipeList = ({ getRecipes, recipes }) => {
     getRecipes()
   }, [getRecipes])
   return (
-    <div className="App">
+    <div>
       <TabNav />
-      {recipes.map(recipe => (
-        <div key={recipe.id}>
-          <p>{recipe.title}</p>
-          <p>{recipe.source}</p>
-          <p>{recipe.notes}</p>
-          <ul>{recipe.tags.map(tag => (
-            <li>{tag}</li>
-          ))}</ul>
-        </div>
-      ))}
-      Recipe List
+      <div className="recipes-container">
+        {recipes.map(recipe => (
+          <Recipe recipe={recipe} key={recipe.id} />
+        ))}
+      </div>
     </div>
   );
 }

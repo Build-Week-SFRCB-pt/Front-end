@@ -1,0 +1,14 @@
+.recipes-container {
+    margin: 0 auto;
+    max-width: 1080px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+.recipe-card {
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
