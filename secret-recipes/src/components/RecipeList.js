@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getRecipes } from '../../actions/index';
-import '../../App.css';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getRecipes } from "../actions/index";
 
 const RecipeList = ({ getRecipes, recipes }) => {
   useEffect(() => {
-    getRecipes()
-  }, [getRecipes])
+    getRecipes();
+  }, [getRecipes]);
   return (
     <div className="App">
       {recipes.map(recipe => (
@@ -16,12 +15,15 @@ const RecipeList = ({ getRecipes, recipes }) => {
       ))}
     </div>
   );
-}
+};
 
 const mapStateToProps = state => {
   return {
     recipes: state.recipes
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { getRecipes })(RecipeList);
+export default connect(
+  mapStateToProps,
+  { getRecipes }
+)(RecipeList);
