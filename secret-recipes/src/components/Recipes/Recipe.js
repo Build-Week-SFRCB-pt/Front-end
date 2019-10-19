@@ -6,6 +6,7 @@ const Recipe = ({ recipe }) => {
   return (
     <div className="recipe-card">
       <Card>
+      <Image src='https://stonecroftvillage.com/wp-content/uploads/2017/03/plate-food.jpg' wrapped ui={false} />
         <Card.Content>
           <Card.Header>{recipe.title}</Card.Header>
           <Card.Meta>
