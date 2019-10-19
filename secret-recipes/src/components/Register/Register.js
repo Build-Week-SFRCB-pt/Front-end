@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // *********** COMPONENT STYLING STARTS HERE ***********
 
@@ -44,16 +45,52 @@ const RegInput = styled.input`
   height: 20%;
   width: 50%;
   border: none;
-  padding: 10px;
-  border-radius: 12px;
+  border-bottom: 2px solid black;
+  background: none;
+  outline: none;
+  &::placeholder {
+       color: white;
+
+  ${props =>
+    props.type == "text"
+      ? `
+      :-internal-autofill-selected {
+        background-color: rgb(232, 240, 254, 0) !important;
+        background-image: none !important;
+        color: rgb(0, 0, 0) !important;
+      }
+
+    `
+      : null}
 `;
 
 const RegButton = styled.button`
   width: 25%;
-  font-size: 20px;
+  font-size: 17px;
   border: none;
-  background: none;
+  border-radius: 10px;
+  background: white;
+  color: red;
+  padding 10px
+`;
+
+const StyledLink = styled(Link)`
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+  font-family: "Open sans", sans-serif;
+  font-size: 15px;
   color: white;
+  margin: 0px;
+`;
+
+const TermsStyle = styled.p`
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+  font-family: "Open sans", sans-serif;
+  font-size: 12px;
+  color: white;
+  margin: 0px;
+  position: absolute;
+  bottom: 7%;
+  text-align: center;
 `;
 
 // *********** COMPONENT STYLING ENDS HERE ***********
@@ -79,7 +116,11 @@ const Register = props => {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        //redirect to login page to login
+        props.history.push("/login");
+        setValues({
+          username: "",
+          password: ""
+        });
       })
       .catch(err => console.log(err));
   };
@@ -106,7 +147,10 @@ const Register = props => {
         />
         <RegButton type="submit">Sign Up!</RegButton>
       </RegFormStyle>
-      <p>Already a member? Log in</p>
+      <TermsStyle>
+        By continuing, you agree to Terms of Service, Privacy Policy <br />{" "}
+        Already a member? <StyledLink to="/login">Log in</StyledLink>
+      </TermsStyle>
     </RegContainer>
   );
 };

@@ -15,8 +15,21 @@ const BgImg = styled.div`
   background-attachment: fixed;
 `;
 
+const Overlay = styled.div`
+  width: 50%;
+  height: 100%;
+  z-index: 11;
+  background: black;
+  position: fixed;
+  opacity: 0.13;
+`;
+
 const FoodImg = props => {
-  return <BgImg></BgImg>;
+  return (
+    <BgImg>
+      <Overlay></Overlay>
+    </BgImg>
+  );
 };
 
 export default FoodImg;

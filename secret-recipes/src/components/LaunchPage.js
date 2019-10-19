@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FoodImg from "./FoodImg.js";
-import Register from "./Register.js";
+import Register from "./Register/Register.js";
 
 const Container = styled.div`
   width: 100%;
@@ -26,11 +26,8 @@ const FormsContainer = styled.div`
 const LaunchPage = props => {
   return (
     <Container className="LaunchPage">
-      {/* <p>Secret Family</p>
-      <p>CookBook</p> */}
       <FormsContainer className="Reg-Form-container">
         <Register />
-        {/* <Login /> */}
         <FoodImg />
       </FormsContainer>
     </Container>

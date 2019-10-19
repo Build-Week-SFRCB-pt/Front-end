@@ -1,22 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Header from "./components/Header.js";
-import RecipeList from "./components/RecipeList";
-import TabNav from "./components/TabNav.js";
+import Login from "./components/Login/Login";
+import Header from "./components/RecipeCards/Header.js";
+import RecipeList from "./components/Recipes/RecipeList";
+import TabNav from "./components/RecipeCards/TabNav.js";
 import LaunchPage from "./components/LaunchPage";
 
 export default function App() {
   return (
     <div>
       <BrowserRouter>
-        {/* <Header />
-        <TabNav /> */}
-        <Route exact path="/login" component={Login} />
-        {/* <Route path="/register" component={Register} /> */}
         <Route exact path="/" component={LaunchPage} />
+        <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/recipes" component={RecipeList} />
         <Route />
       </BrowserRouter>
