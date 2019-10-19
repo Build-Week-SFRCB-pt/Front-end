@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getRecipes } from "../../actions/index";
 import "../../App.css";
 import TabNav from "../RecipeCards/TabNav";
+import Header from "../RecipeCards/Header.js";
 
 const RecipeList = ({ getRecipes, recipes }) => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const RecipeList = ({ getRecipes, recipes }) => {
   }, [getRecipes]);
   return (
     <div className="App">
+      <Header />
       <TabNav />
       {recipes.map(recipe => (
         <div key={recipe.id}>

@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import Login from "./components/Login/Login";
-import Header from "./components/RecipeCards/Header.js";
 import RecipeList from "./components/Recipes/RecipeList";
 import TabNav from "./components/RecipeCards/TabNav.js";
 import LaunchPage from "./components/LaunchPage";
