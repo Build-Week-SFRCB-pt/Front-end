@@ -14,6 +14,7 @@ const createLabel = (iconName, labelText) => (
 const recipeLabel = createLabel("heart", "Recipes");
 const aboutLabel = createLabel("question circle", "About");
 const signinLabel = createLabel("sign in", "Sign in");
+const addRecipeLabel = createLabel("plus", "Add Recipe")
 
 const panes = [
   {
@@ -23,6 +24,16 @@ const panes = [
         as={Nav}
         to={`/recipes`}
         content={recipeLabel}
+      />
+    )
+  },
+  {
+    menuItem: (
+      <Menu.Item
+        key="add"
+        as={Nav}
+        to={`/add-recipe`}
+        content={addRecipeLabel}
       />
     )
   },
