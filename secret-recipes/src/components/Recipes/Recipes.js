@@ -14,8 +14,8 @@ const Recipes = ({ recipe }) => {
           <Card.Description>{recipe.notes}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          {recipe.tags.map(tag => (
-            <p>{tag}</p>
+          {recipe.tags.map((tag, i) => (
+            <p key={i}>{tag}</p>
           ))}
         </Card.Content>
       </Card>

@@ -17,11 +17,10 @@ const RecipeList = ({ getRecipes, recipes, isFetching, history }) => {
     e.preventDefault();
     history.push(`/recipe/${recipe.id}`)
   }
-
   return (
     <div>
       <TabNav />
-      {isFetching ? <p style={{ textAlign: 'center' }}>I can hear your stomach grumbling...<Loader active inline='centered' /></p> : (
+      {isFetching ? <div style={{ textAlign: 'center' }}>I can hear your stomach grumbling...<Loader active inline='centered' /></div> : (
         <div className="recipes-container">
           {recipes.map(recipe => (
             <div onClick={e => routeToRecipe(e, recipe)}>
