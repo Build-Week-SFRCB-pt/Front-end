@@ -9,6 +9,7 @@ import Register from './components/Register/Register';
 import RecipeList from './components/Recipes/RecipeList';
 import PrivateRoute from './utils/PrivateRoute';
 import AddRecipe from './components/Recipes/AddRecipe.js';
+import Recipe from './components/Recipes/Recipe.js';
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route exact path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <PrivateRoute exact path="/recipes" component={RecipeList} />
+          <PrivateRoute path="/recipe/:id" component={Recipe} />
           <Route path="/add-recipe" component={AddRecipe} />
           <Route />
         </main>
