@@ -39,7 +39,7 @@ const panes = [
   },
   {
     menuItem: (
-      <Menu.Item key="signIn" as={Nav} to={`/signIn`} content={signinLabel} />
+      <Menu.Item key="signIn" as={Nav} to={`/login`} content={signinLabel} />
     )
   }
 ];

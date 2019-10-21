@@ -13,8 +13,8 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Route exact path="/" component={LaunchPage} />
-        <Route exact path="/register" component={Register} />
+        {/* <Route exact path="/" component={LaunchPage} /> */}
+        <Route exact path="/" component={Register} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/recipes" component={RecipeList} />
         <Route path="/add-recipe" component={AddRecipe} />
