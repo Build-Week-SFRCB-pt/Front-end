@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 
 /*
   Private Route rules:
@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={props => {
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem("token")) {
           // if token is in localstorage, render the given component
           return <Component {...props} />;
         } else {

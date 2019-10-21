@@ -59,6 +59,7 @@ const LogInInput = styled.input`
   border-bottom: 2px solid black;
   background: none;
   outline: none;
+  color: white;
   &::placeholder {
        color: white;
 
@@ -82,7 +83,11 @@ const LogInButton = styled.button`
   border-radius: 10px;
   background: white;
   color: red;
-  padding 10px
+  padding 10px;
+  outline: none;
+  &:hover {
+    background: #EFEFEF
+  }
 `;
 
 const StyledLink = styled(Link)`

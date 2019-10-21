@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import FoodImg from "../FoodImg";
+import styled from "styled-components";
 
 // *********** COMPONENT STYLING STARTS HERE ***********
+
+const Container = styled.div`
+  width: 100%;
+  height 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+
+const RegContainer = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+  height: 100%;
+  background: #db0000;
+`;
 
 const SignUp = styled.p`
   @import url("https://fonts.googleapis.com/css?family=Oswald:600&display=swap");
@@ -22,16 +43,6 @@ const P = styled.p`
   margin: 0px;
 `;
 
-const RegContainer = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center
-  height: 100%;
-  background: #db0000;
-`;
-
 const RegFormStyle = styled.form`
   display: flex;
   flex-direction: column;
@@ -48,6 +59,7 @@ const RegInput = styled.input`
   border-bottom: 2px solid black;
   background: none;
   outline: none;
+  color: white
   &::placeholder {
        color: white;
 
@@ -71,7 +83,11 @@ const RegButton = styled.button`
   border-radius: 10px;
   background: white;
   color: red;
-  padding 10px
+  padding 10px;
+  outline: none;
+  &:hover {
+    background: #EFEFEF
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -126,32 +142,35 @@ const Register = props => {
   };
 
   return (
-    <RegContainer className="reg-content">
-      <SignUp>Sign Up</SignUp>
-      <P>Find new recipes to try</P>
-      <RegFormStyle className="reg-form" onSubmit={handleSubmit}>
-        <RegInput
-          className="reg-input"
-          type="text"
-          placeholder="Username"
-          name="username"
-          onChange={handleChange}
-          value={values.username}
-        />
-        <RegInput
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-          value={values.password}
-        />
-        <RegButton type="submit">Sign Up!</RegButton>
-      </RegFormStyle>
-      <TermsStyle>
-        By continuing, you agree to Terms of Service, Privacy Policy <br />{" "}
-        Already a member? <StyledLink to="/login">Log in</StyledLink>
-      </TermsStyle>
-    </RegContainer>
+    <Container>
+      <RegContainer className="reg-content">
+        <SignUp>Sign Up</SignUp>
+        <P>Find new recipes to try</P>
+        <RegFormStyle className="reg-form" onSubmit={handleSubmit}>
+          <RegInput
+            className="reg-input"
+            type="text"
+            placeholder="Username"
+            name="username"
+            onChange={handleChange}
+            value={values.username}
+          />
+          <RegInput
+            type="password"
+            placeholder="Password"
+            name="password"
+            onChange={handleChange}
+            value={values.password}
+          />
+          <RegButton type="submit">Sign Up!</RegButton>
+        </RegFormStyle>
+        <TermsStyle>
+          By continuing, you agree to Terms of Service, Privacy Policy <br />{" "}
+          Already a member? <StyledLink to="/login">Log in</StyledLink>
+        </TermsStyle>
+      </RegContainer>
+      <FoodImg />
+    </Container>
   );
 };
 

@@ -21,7 +21,7 @@ const Overlay = styled.div`
   z-index: 11;
   background: black;
   position: fixed;
-  opacity: 0.13;
+  opacity: 0.18;
 `;
 
 const FoodImg = props => {
