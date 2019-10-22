@@ -1,18 +1,25 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import TabNav from '../RecipeCards/TabNav';
 import { connect } from 'react-redux';
-import { getRecipes } from '../../actions/index';
+import { getSingleRecipe } from '../../actions/index';
 
-const Recipe = ({ getRecipes, history, recipes, match }) => {
-  const item = recipes.find(
-    thing => `${thing.id}` === match.params.id
-  );
-  
+const Recipe = ({ getSingleRecipe, singleRecipe, history, recipes, match }) => {
+
+
+  useEffect(() => {
+    getSingleRecipe(match.params.id)
+    console.log(singleRecipe)
+  }, [match.params.id])
+
+  if(singleRecipe === null){
+    return <p>Loading...</p>
+  }
+
   return (
     <div>
       <TabNav />
-      <p>{item.title}</p>
+      <p>{singleRecipe.title}</p>
       <button>Delete</button>
     </div>
   )
@@ -20,9 +27,10 @@ const Recipe = ({ getRecipes, history, recipes, match }) => {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes
+    recipes: state.recipes,
+    singleRecipe: state.singleRecipe
   }
 }
 
-export default connect(mapStateToProps, { getRecipes })(Recipe)
+export default connect(mapStateToProps, { getSingleRecipe })(Recipe)
 

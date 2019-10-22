@@ -27,17 +27,7 @@ const panes = [
   {
     menuItem: (
       <Menu.Item
-        key="add"
-        as={Nav}
-        to={`/add-recipe`}
-        content={addRecipeLabel}
-      />
-    )
-  },
-  {
-    menuItem: (
-      <Menu.Item
-        key="about" //check this later on
+        key="add" 
         as={Nav}
         to={`/add-recipe`}
         content={addRecipeLabel}
