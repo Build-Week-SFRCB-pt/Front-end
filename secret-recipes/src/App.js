@@ -20,15 +20,18 @@ export default function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={Register} />
         <main>
-          <Header />
-          {/* <Route exact path="/" component={LaunchPage} /> */}
-          <Route exact path="/" component={Register} />
-          <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/recipes" component={RecipeList} />
+          <PrivateRoute path="/recipe/:id" component={Recipe} />
           <Route path="/add-recipe" component={AddRecipe} />
           <Route />
         </main>
+
+
+
+
+        <Route />
       </BrowserRouter>
     </div>
   );
 }
+

@@ -14,12 +14,8 @@ const createLabel = (iconName, labelText) => (
 const recipeLabel = createLabel("heart", "Recipes");
 const aboutLabel = createLabel("question circle", "About");
 const signinLabel = createLabel("sign in", "Sign in");
-<<<<<<< HEAD
-const addRecipeLabel = createLabel("plus", "Add Recipe");
-=======
 const addRecipeLabel = createLabel("plus", "Add Recipe")
 
->>>>>>> 6221365517bf9639268e0606e1a5208d591fa2e8
 
 const panes = [
   {
@@ -40,21 +36,12 @@ const panes = [
   },
   {
     menuItem: (
-<<<<<<< HEAD
-      <Menu.Item key="about" as={Nav} to={`/about`} content={aboutLabel} />
-    )
-  },
-  {
-    menuItem: (
-      <Menu.Item key="signIn" as={Nav} to={`/login`} content={signinLabel} />
-=======
       <Menu.Item
         key="about" //check this later on
         as={Nav}
         to={`/add-recipe`}
         content={addRecipeLabel}
       />
->>>>>>> 6221365517bf9639268e0606e1a5208d591fa2e8
     )
   },
   {
