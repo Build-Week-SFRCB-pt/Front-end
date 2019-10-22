@@ -1,36 +1,48 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getRecipes } from '../../actions/index';
-import '../../App.css';
-import TabNav from '../RecipeCards/TabNav';
 
-const RecipeList = ({ getRecipes, recipes }) => {
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getRecipes } from "../../actions/index";
+import "./Recipes.css";
+import TabNav from "../RecipeCards/TabNav";
+import Recipe from "./Recipe";
+import { Loader } from "semantic-ui-react";
+import '../../App.css';
+
+const RecipeList = ({ getRecipes, recipes, isFetching }) => {
 
   useEffect(() => {
-    getRecipes()
-  }, [getRecipes])
+    getRecipes();
+  }, [getRecipes]);
+
   return (
-    <div className="App">
+    <div>
       <TabNav />
-      {recipes.map(recipe => (
-        <div key={recipe.id}>
-          <p>{recipe.title}</p>
-          <p>{recipe.source}</p>
-          <p>{recipe.notes}</p>
-          <ul>{recipe.tags.map(tag => (
-            <li>{tag}</li>
-          ))}</ul>
+      {isFetching ? (
+        <p style={{ textAlign: "center" }}>
+          I can hear your stomach grumbling...
+          <Loader active inline="centered" />
+        </p>
+      ) : (
+        <div className="recipes-container">
+          {recipes.map(recipe => (
+            <Recipe recipe={recipe} key={recipe.id} />
+          ))}
         </div>
-      ))}
-      Recipe List
+      )}
+
+
     </div>
   );
-}
+};
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes
-  }
-}
+    recipes: state.recipes,
+    isFetching: state.isFetching
+  };
+};
 
-export default connect(mapStateToProps, { getRecipes })(RecipeList);
+export default connect(
+  mapStateToProps,
+  { getRecipes }
+)(RecipeList);
