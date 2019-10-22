@@ -64,7 +64,7 @@ const LogInInput = styled.input`
        color: white;
 
   ${props =>
-    props.type == "text"
+    props.type === "text"
       ? `
       :-internal-autofill-selected {
         background-color: rgb(232, 240, 254, 0) !important;

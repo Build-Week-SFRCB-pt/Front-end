@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-//import Register from "./Register/Register.js";
+import Register from "./Register/Register.js";
 
 const Container = styled.div`
   width: 100%;

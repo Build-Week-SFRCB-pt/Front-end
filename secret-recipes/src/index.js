@@ -11,8 +11,13 @@ import App from "./App";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+
+<<<<<<< HEAD
+=======
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
+
+>>>>>>> 6221365517bf9639268e0606e1a5208d591fa2e8
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
