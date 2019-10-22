@@ -65,7 +65,7 @@ const RegInput = styled.input`
        color: white;
 
   ${props =>
-    props.type == "text"
+    props.type === "text"
       ? `
       :-internal-autofill-selected {
         background-color: rgb(232, 240, 254, 0) !important;
@@ -111,12 +111,6 @@ const TermsStyle = styled.p`
 `;
 
 // *********** COMPONENT STYLING ENDS HERE ***********
-=======
-import React, { useState } from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { Link } from 'react-router-dom';
-
-
 const Register = props => {
   const [values, setValues] = useState({
     username: "",

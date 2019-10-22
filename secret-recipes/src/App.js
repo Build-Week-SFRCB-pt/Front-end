@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 //import './App.css';
-import Header from "./components/RecipeCards/Header.js";
 import { BrowserRouter } from "react-router-dom";
 
 import Login from './components/Login/Login';
@@ -18,10 +17,9 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Register} />
         <main>
-
-          <Route exact path="/login" component={Login} />
-          <Route path="/" component={Register} />
           <PrivateRoute exact path="/recipes" component={RecipeList} />
           <PrivateRoute path="/recipe/:id" component={Recipe} />
           <Route path="/add-recipe" component={AddRecipe} />
@@ -29,7 +27,7 @@ export default function App() {
         </main>
 
 
-    
+
 
         <Route />
       </BrowserRouter>
