@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { addRecipe } from '../../actions/index';
-import TabNav from '../RecipeCards/TabNav'
+
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addRecipe } from "../../actions/index";
+import TabNav from "../RecipeCards/TabNav";
+
 
 const initialInput = {
   title: "",
@@ -23,6 +25,8 @@ const AddRecipe = ({ addRecipe }) => {
     e.preventDefault()
     addRecipe(values)
   }
+};
+
   return (
     <div>
       <TabNav />
@@ -72,13 +76,18 @@ const AddRecipe = ({ addRecipe }) => {
         <button>Add Recipe</button>
       </form>
     </div>
-  )
-}
+
+  );
+};
 
 const mapStateToProps = state => {
   return {
     recipes: state.recipes
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { addRecipe })(AddRecipe)
+export default connect(
+  mapStateToProps,
+  { addRecipe }
+)(AddRecipe);
+

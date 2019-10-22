@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import TabNav from '../RecipeCards/TabNav';
 import { connect } from 'react-redux';
@@ -24,3 +25,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { getRecipes })(Recipe)
+

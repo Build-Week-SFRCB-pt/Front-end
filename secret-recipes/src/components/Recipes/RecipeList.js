@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRecipes } from '../../actions/index';
@@ -31,13 +32,17 @@ const RecipeList = ({ getRecipes, recipes, isFetching, history }) => {
       )}
     </div>
   );
-}
+};
 
 const mapStateToProps = state => {
   return {
     recipes: state.recipes,
     isFetching: state.isFetching
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { getRecipes })(RecipeList);
+
+export default connect(
+  mapStateToProps,
+  { getRecipes }
+)(RecipeList);
