@@ -1,14 +1,15 @@
 import {
   FETCHING_RECIPES_START,
   FETCHING_RECIPES_SUCCESS,
-  FETCHING_RECIPES_FAIL
+  FETCHING_RECIPES_FAIL,
+  ADD_RECIPE_START,
+  ADD_RECIPE_SUCCESS
 }
 
   from '../actions/index';
 
 const initialState = {
   recipes: [],
-  currentUser: {},
   isFetching: false
 }
 
@@ -24,6 +25,17 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         recipes: action.payload
+      }
+    case ADD_RECIPE_START:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case ADD_RECIPE_SUCCESS:
+      return {
+        ...state,
+        recipes: [...state.recipes, action.payload],
+        isFetching: false
       }
     default:
       return state

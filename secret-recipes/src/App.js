@@ -1,14 +1,13 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-//import './App.css';
+import React from "react";
+import { Route } from "react-router-dom";
 import Header from "./components/RecipeCards/Header.js";
-//import TabNav from "./components/RecipeCards/TabNav.js";
 import { BrowserRouter } from "react-router-dom";
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import RecipeList from './components/Recipes/RecipeList';
-import PrivateRoute from './utils/PrivateRoute';
-
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import RecipeList from "./components/Recipes/RecipeList";
+import PrivateRoute from "./utils/PrivateRoute";
+import AddRecipe from "./components/Recipes/AddRecipe.js";
+//import LaunchPage from "./components/LaunchPage.js";
 
 export default function App() {
   return (
@@ -16,16 +15,14 @@ export default function App() {
       <BrowserRouter>
         <main>
           <Header />
-          {/* <TabNav /> */}
+          {/* <Route exact path="/" component={LaunchPage} /> */}
+          <Route exact path="/" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route path="/register" component={Register} />
           <PrivateRoute exact path="/recipes" component={RecipeList} />
-          <Route />
+          <Route path="/add-recipe" component={AddRecipe} />
           <Route />
         </main>
       </BrowserRouter>
     </div>
   );
 }
-
-
