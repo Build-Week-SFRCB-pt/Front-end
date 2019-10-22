@@ -26,6 +26,10 @@ const Recipe = ({ getSingleRecipe, deleteRecipe, singleRecipe, history, recipes,
     <div>
       <TabNav />
       <p>{singleRecipe.title}</p>
+      <p>{singleRecipe.source}</p>
+      <p>{singleRecipe.notes}</p>
+      <p>{singleRecipe.ingredients}</p>
+      <p>{singleRecipe.instructions}</p>
       <button onClick={deleteFunction}>Delete</button>
     </div>
   )
