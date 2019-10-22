@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
@@ -110,6 +111,11 @@ const TermsStyle = styled.p`
 `;
 
 // *********** COMPONENT STYLING ENDS HERE ***********
+=======
+import React, { useState } from 'react';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { Link } from 'react-router-dom';
+
 
 const Register = props => {
   const [values, setValues] = useState({

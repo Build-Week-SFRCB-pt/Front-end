@@ -18,6 +18,7 @@ const addRecipeLabel = createLabel("plus", "Add Recipe");
 
 const panes = [
   {
+
     menuItem: (
       <Menu.Item key="recipes" as={Nav} to={`/recipes`} content={recipeLabel} />
     )

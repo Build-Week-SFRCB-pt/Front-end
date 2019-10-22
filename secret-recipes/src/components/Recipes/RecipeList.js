@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getRecipes } from "../../actions/index";
@@ -5,8 +6,10 @@ import "./Recipes.css";
 import TabNav from "../RecipeCards/TabNav";
 import Recipe from "./Recipe";
 import { Loader } from "semantic-ui-react";
+import '../../App.css';
 
 const RecipeList = ({ getRecipes, recipes, isFetching }) => {
+
   useEffect(() => {
     getRecipes();
   }, [getRecipes]);
@@ -26,6 +29,8 @@ const RecipeList = ({ getRecipes, recipes, isFetching }) => {
           ))}
         </div>
       )}
+
+
     </div>
   );
 };
