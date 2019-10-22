@@ -25,7 +25,6 @@ const AddRecipe = ({ addRecipe }) => {
     e.preventDefault()
     addRecipe(values)
   }
-};
 
   return (
     <div>
