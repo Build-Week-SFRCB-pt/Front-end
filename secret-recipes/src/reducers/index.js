@@ -2,7 +2,9 @@ import {
   FETCHING_RECIPES_START,
   FETCHING_RECIPES_SUCCESS,
   ADD_RECIPE_START,
-  ADD_RECIPE_SUCCESS
+  ADD_RECIPE_SUCCESS,
+  DELETE_RECIPE_START,
+  UPDATE_RECIPE_START
 } from "../actions/index";
 
 const initialState = {
@@ -33,6 +35,17 @@ export const reducer = (state = initialState, action) => {
         ...state,
         recipes: [...state.recipes, action.payload],
         isFetching: false
+      };
+    case DELETE_RECIPE_START:
+      return {
+        ...state,
+        recipes: state.recipes.filter(recipe => recipe.id !== action.payload)
+      };
+
+    case UPDATE_RECIPE_START:
+      return {
+        ...state,
+        recipes: state.recipes.filter(recipe => recipe.id !== action.payload)
       };
     default:
       return state;
