@@ -1,6 +1,7 @@
 import {
   FETCHING_RECIPES_START,
   FETCHING_RECIPES_SUCCESS,
+  FETCHING_RECIPES_FAIL,
   ADD_RECIPE_START,
   ADD_RECIPE_SUCCESS,
   DELETE_RECIPE_START,
@@ -10,7 +11,7 @@ import {
 const initialState = {
   recipes: [],
   isFetching: false
-};
+}
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,18 +19,18 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true
-      };
+      }
     case FETCHING_RECIPES_SUCCESS:
       return {
         ...state,
         isFetching: false,
         recipes: action.payload
-      };
+      }
     case ADD_RECIPE_START:
       return {
         ...state,
         isFetching: true
-      };
+      }
     case ADD_RECIPE_SUCCESS:
       return {
         ...state,
@@ -48,6 +49,6 @@ export const reducer = (state = initialState, action) => {
         recipes: state.recipes.filter(recipe => recipe.id !== action.payload)
       };
     default:
-      return state;
+      return state
   }
-};
+}
