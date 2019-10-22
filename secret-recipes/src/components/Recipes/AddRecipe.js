@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addRecipe } from "../../actions/index";
 import TabNav from "../RecipeCards/TabNav";
-
 
 const initialInput = {
   title: "",
@@ -12,19 +10,19 @@ const initialInput = {
   ingredients: [],
   instructions: [],
   tags: []
-}
+};
 
 const AddRecipe = ({ addRecipe }) => {
-  const [values, setValues] = useState(initialInput)
+  const [values, setValues] = useState(initialInput);
 
   const handleChange = e => {
-    setValues({ ...values, [e.target.name]: e.target.value })
-  }
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = e => {
-    e.preventDefault()
-    addRecipe(values)
-  }
+    e.preventDefault();
+    addRecipe(values);
+  };
 
   return (
     <div>
@@ -75,7 +73,6 @@ const AddRecipe = ({ addRecipe }) => {
         <button>Add Recipe</button>
       </form>
     </div>
-
   );
 };
 
@@ -89,4 +86,3 @@ export default connect(
   mapStateToProps,
   { addRecipe }
 )(AddRecipe);
-

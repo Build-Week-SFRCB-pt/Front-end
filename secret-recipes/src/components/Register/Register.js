@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
@@ -63,7 +62,6 @@ const RegInput = styled.input`
   color: white
   &::placeholder {
        color: white;
-
   ${props =>
     props.type === "text"
       ? `
@@ -72,7 +70,6 @@ const RegInput = styled.input`
         background-image: none !important;
         color: rgb(0, 0, 0) !important;
       }
-
     `
       : null}
 `;
