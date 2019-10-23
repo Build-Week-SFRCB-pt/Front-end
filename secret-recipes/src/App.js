@@ -10,6 +10,7 @@ import RecipeList from './components/Recipes/RecipeList';
 import PrivateRoute from './utils/PrivateRoute';
 import AddRecipe from './components/Recipes/AddRecipe.js';
 import Recipe from './components/Recipes/Recipe.js';
+import UpdateForm from './components/Recipes/UpdateForm';
 
 
 
@@ -21,9 +22,9 @@ export default function App() {
         <Route exact path="/" component={Register} />
         <main>
           <PrivateRoute exact path="/recipes" component={RecipeList} />
-          <PrivateRoute path="/recipe/:id" component={Recipe} />
-          <Route path="/add-recipe" component={AddRecipe} />
-          <Route />
+          <PrivateRoute exact path="/recipe/:id" component={Recipe} />
+          <PrivateRoute path="/add-recipe" component={AddRecipe} />
+          <PrivateRoute exact path="/recipe/:id/edit" component={UpdateForm} />
         </main>
 
 

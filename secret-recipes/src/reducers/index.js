@@ -2,14 +2,18 @@ import {
   FETCHING_RECIPES_START,
   FETCHING_RECIPES_SUCCESS,
   FETCHING_RECIPES_FAIL,
+  FETCHING_SINGLE_RECIPE_START,
+  FETCHING_SINGLE_RECIPE_SUCCESS,
+  FETCHING_SINGLE_RECIPE_FAIL,
   ADD_RECIPE_START,
   ADD_RECIPE_SUCCESS,
-  DELETE_RECIPE_START,
-  UPDATE_RECIPE_START
+  DELETE_RECIPE_SUCCESS,
+  UPDATE_RECIPE_SUCCESS
 } from "../actions/index";
 
 const initialState = {
   recipes: [],
+  singleRecipe: null,
   isFetching: false
 }
 
@@ -26,6 +30,17 @@ export const reducer = (state = initialState, action) => {
         isFetching: false,
         recipes: action.payload
       }
+    case FETCHING_SINGLE_RECIPE_START:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case FETCHING_SINGLE_RECIPE_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        singleRecipe: action.payload
+      }
     case ADD_RECIPE_START:
       return {
         ...state,
@@ -34,19 +49,19 @@ export const reducer = (state = initialState, action) => {
     case ADD_RECIPE_SUCCESS:
       return {
         ...state,
-        recipes: [...state.recipes, action.payload],
+        recipes: action.payload,
         isFetching: false
       };
-    case DELETE_RECIPE_START:
+    case DELETE_RECIPE_SUCCESS:
       return {
         ...state,
-        recipes: state.recipes.filter(recipe => recipe.id !== action.payload)
+        recipes: action.payload
       };
 
-    case UPDATE_RECIPE_START:
+    case UPDATE_RECIPE_SUCCESS:
       return {
         ...state,
-        recipes: state.recipes.filter(recipe => recipe.id !== action.payload)
+        recipes: action.payload
       };
     default:
       return state
