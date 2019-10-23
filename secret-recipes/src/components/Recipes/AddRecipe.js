@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addRecipe } from "../../actions/index";
 import TabNav from "../RecipeCards/TabNav";
+import { Form, TextArea, Button } from 'semantic-ui-react'
 
 const initialInput = {
   title: "",
@@ -12,7 +13,7 @@ const initialInput = {
   tags: []
 };
 
-const AddRecipe = ({ addRecipe }) => {
+const AddRecipe = ({ addRecipe, history }) => {
   const [values, setValues] = useState(initialInput);
 
   const handleChange = e => {
@@ -21,13 +22,20 @@ const AddRecipe = ({ addRecipe }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addRecipe(values);
+    let newValues = {
+      ...values,
+      ingredients: values.ingredients.split(", "),
+      instructions: values.instructions.split(", "),
+      tags: values.tags.split(", ")
+    }
+    addRecipe(newValues);
+    history.push('/recipes')
   };
 
   return (
     <div>
       <TabNav />
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <input
           type="text"
           onChange={handleChange}
@@ -70,8 +78,8 @@ const AddRecipe = ({ addRecipe }) => {
           value={values.tags}
           placeholder="Tags"
         />
-        <button>Add Recipe</button>
-      </form>
+        <Button type="submit">Add Recipe</Button>
+      </Form>
     </div>
   );
 };
