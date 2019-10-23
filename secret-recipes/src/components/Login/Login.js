@@ -1,3 +1,4 @@
+
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -64,7 +65,7 @@ const LogInInput = styled.input`
        color: white;
 
   ${props =>
-    props.type == "text"
+    props.type === "text"
       ? `
       :-internal-autofill-selected {
         background-color: rgb(232, 240, 254, 0) !important;
@@ -108,6 +109,7 @@ const NotMem = styled.p`
   bottom: 7%;
   text-align: center;
 `;
+
 
 const Login = props => {
   const [values, setValues] = useState({

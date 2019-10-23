@@ -1,3 +1,4 @@
+
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const FETCHING_RECIPES_START = "FETCHING_RECIPES_START"
@@ -23,8 +24,7 @@ export const addRecipe = newRecipe => dispatch => {
   axiosWithAuth()
     .post('https://lambdaschool-cookbook2.herokuapp.com/recipes', newRecipe)
     .then(res => {
-      console.log(res)
-      // dispatch({ type: ADD_RECIPE_SUCCESS, payload: res.data })
+      dispatch({ type: ADD_RECIPE_SUCCESS, payload: res.data })
     })
     .catch(err => console.log(err))
 }
