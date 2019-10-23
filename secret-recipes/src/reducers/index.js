@@ -61,7 +61,7 @@ export const reducer = (state = initialState, action) => {
     case UPDATE_RECIPE_SUCCESS:
       return {
         ...state,
-        // recipes: state.recipes.filter(recipe => recipe.id !== action.payload)
+        recipes: action.payload
       };
     default:
       return state

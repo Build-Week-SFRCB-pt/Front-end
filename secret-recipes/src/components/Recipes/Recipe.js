@@ -9,8 +9,7 @@ const Recipe = ({ getSingleRecipe, deleteRecipe, singleRecipe, history, recipes,
 
   useEffect(() => {
     getSingleRecipe(match.params.id)
-    console.log(singleRecipe)
-  }, [match.params.id])
+  }, [match.params.id, getSingleRecipe])
 
   if (singleRecipe === null) {
     return <p>Loading...</p>
@@ -31,6 +30,7 @@ const Recipe = ({ getSingleRecipe, deleteRecipe, singleRecipe, history, recipes,
       <p>{singleRecipe.ingredients}</p>
       <p>{singleRecipe.instructions}</p>
       <button onClick={deleteFunction}>Delete</button>
+      <button onClick={(e) => history.push(`/recipe/${match.params.id}/edit`)}>Edit Recipe</button>
     </div>
   )
 }

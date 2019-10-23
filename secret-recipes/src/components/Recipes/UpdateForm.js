@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { addRecipe } from "../../actions/index";
+import { addRecipe, getSingleRecipe } from "../../actions/index";
 import TabNav from "../RecipeCards/TabNav";
 import { Form, Button } from 'semantic-ui-react'
 
@@ -13,8 +13,24 @@ const initialInput = {
   tags: []
 };
 
-const AddRecipe = ({ addRecipe, history }) => {
+const UpdateForm = ({ addRecipe, history, match, singleRecipe, getSingleRecipe }) => {
   const [values, setValues] = useState(initialInput);
+  console.log("values",values)
+  // useEffect(() => {
+  //   getSingleRecipe(match.params.id)
+  // }, [match.params.id, getSingleRecipe])
+
+  // useEffect(() => {
+  //   const recipeId = match.params.id;
+  //   const recipeToUpdate = singleRecipe.find(recipe => {
+  //     console.log(recipe)
+  //     return `${recipe.id}` === recipeId
+  //   })
+  //   if (recipeToUpdate === null) {
+  //     // getSingleRecipe(match.params.id)
+  //     setValues(recipeToUpdate)
+  //   }
+  // }, [match, values])
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -28,7 +44,7 @@ const AddRecipe = ({ addRecipe, history }) => {
       instructions: values.instructions.split(", "),
       tags: values.tags.split(", ")
     }
-    addRecipe(newValues);
+    // addRecipe(newValues);
     history.push('/recipes')
   };
 
@@ -78,7 +94,7 @@ const AddRecipe = ({ addRecipe, history }) => {
           value={values.tags}
           placeholder="Example: Tag 1, Tag 2"
         />
-        <Button type="submit">Add Recipe</Button>
+        <Button type="submit">Save Recipe</Button>
       </Form>
     </div>
   );
@@ -86,11 +102,12 @@ const AddRecipe = ({ addRecipe, history }) => {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes
+    recipes: state.recipes,
+    singleRecipe: state.singleRecipe
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addRecipe }
-)(AddRecipe);
+  { addRecipe, getSingleRecipe }
+)(UpdateForm);

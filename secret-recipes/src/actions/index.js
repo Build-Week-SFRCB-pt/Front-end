@@ -9,7 +9,7 @@ export const getRecipes = () => dispatch => {
   axiosWithAuth()
     .get("recipes")
     .then(res => {
-      console.log(res)
+      console.log("recipe data", res)
       dispatch({ type: FETCHING_RECIPES_SUCCESS, payload: res.data.recipes });
     });
 };
