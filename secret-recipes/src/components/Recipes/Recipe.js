@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import TabNav from "../RecipeCards/TabNav";
 import { connect } from "react-redux";
+import { Card, Image } from "semantic-ui-react";
 import { getSingleRecipe, deleteRecipe } from "../../actions/index";
 
 const Recipe = ({
@@ -26,21 +27,32 @@ const Recipe = ({
   };
 
   return (
-    <div>
+    <div className="recipe-card">
       <TabNav />
-      <p>{singleRecipe.title}</p>
-      <p>{singleRecipe.source}</p>
-      <p>{singleRecipe.notes}</p>
-      <p>{singleRecipe.ingredients}</p>
-      <p>{singleRecipe.instructions}</p>
-      <button onClick={deleteFunction}>Delete</button>
-      <button
-        onClick={e =>
-          history.push(`/recipe/${match.params.id}/edit`, singleRecipe)
-        }
-      >
-        Edit Recipe
-      </button>
+      <Card>
+        <Image
+          src="https://stonecroftvillage.com/wp-content/uploads/2017/03/plate-food.jpg"
+          wrapped
+          ui={false}
+        />
+        <Card.Content>
+          <Card.Header>{singleRecipe.title}</Card.Header>
+          <Card.Meta>
+            <span>{singleRecipe.source}</span>
+          </Card.Meta>
+          <Card.Description>{singleRecipe.notes}</Card.Description>
+          <Card.Description>{singleRecipe.ingredients}</Card.Description>
+          <Card.Description>{singleRecipe.instructions}</Card.Description>
+          <button onClick={deleteFunction}>Delete</button>
+          <button
+            onClick={e =>
+              history.push(`/recipe/${match.params.id}/edit`, singleRecipe)
+            }
+          >
+            Edit Recipe
+          </button>
+        </Card.Content>
+      </Card>
     </div>
   );
 };
