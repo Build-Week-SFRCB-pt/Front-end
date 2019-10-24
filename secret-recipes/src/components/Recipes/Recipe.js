@@ -1,25 +1,29 @@
+import React, { useEffect } from "react";
+import TabNav from "../RecipeCards/TabNav";
+import { connect } from "react-redux";
+import { getSingleRecipe, deleteRecipe } from "../../actions/index";
 
-import React, { useEffect } from 'react';
-import TabNav from '../RecipeCards/TabNav';
-import { connect } from 'react-redux';
-import { getSingleRecipe, deleteRecipe } from '../../actions/index';
-
-const Recipe = ({ getSingleRecipe, deleteRecipe, singleRecipe, history, recipes, match }) => {
-
-
+const Recipe = ({
+  getSingleRecipe,
+  deleteRecipe,
+  singleRecipe,
+  history,
+  recipes,
+  match
+}) => {
   useEffect(() => {
-    getSingleRecipe(match.params.id)
-  }, [match.params.id, getSingleRecipe])
+    getSingleRecipe(match.params.id);
+  }, [match.params.id, getSingleRecipe]);
 
   if (singleRecipe === null) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
   const deleteFunction = e => {
     e.preventDefault();
-    deleteRecipe(match.params.id)
-    history.push('/recipes')
-  }
+    deleteRecipe(match.params.id);
+    history.push("/recipes");
+  };
 
   return (
     <div>
@@ -30,17 +34,25 @@ const Recipe = ({ getSingleRecipe, deleteRecipe, singleRecipe, history, recipes,
       <p>{singleRecipe.ingredients}</p>
       <p>{singleRecipe.instructions}</p>
       <button onClick={deleteFunction}>Delete</button>
-      <button onClick={(e) => history.push(`/recipe/${match.params.id}/edit`)}>Edit Recipe</button>
+      <button
+        onClick={e =>
+          history.push(`/recipe/${match.params.id}/edit`, singleRecipe)
+        }
+      >
+        Edit Recipe
+      </button>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
     recipes: state.recipes,
     singleRecipe: state.singleRecipe
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, { getSingleRecipe, deleteRecipe })(Recipe)
-
+export default connect(
+  mapStateToProps,
+  { getSingleRecipe, deleteRecipe }
+)(Recipe);
