@@ -13,7 +13,7 @@ const createLabel = (iconName, labelText) => (
 
 const recipeLabel = createLabel("heart", "Recipes");
 const aboutLabel = createLabel("question circle", "About");
-const signinLabel = createLabel("sign in", "Sign in");
+const signinLabel = createLabel("sign in", "Sign Out");
 const addRecipeLabel = createLabel("plus", "Add Recipe")
 
 

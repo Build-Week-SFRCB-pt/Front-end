@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "name": "secret-recipes",
+  "builds": [
+    {
+      "src": "secret-recipes/package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "secret-recipes/$1" }]
+}
