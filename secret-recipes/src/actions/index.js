@@ -9,23 +9,26 @@ export const getRecipes = () => dispatch => {
   axiosWithAuth()
     .get("recipes")
     .then(res => {
-      console.log("recipe data", res)
+      console.log("recipe data", res);
       dispatch({ type: FETCHING_RECIPES_SUCCESS, payload: res.data.recipes });
     });
 };
 
-export const FETCHING_SINGLE_RECIPE_START = "FETCHING_SINGLE_RECIPE_START"
-export const FETCHING_SINGLE_RECIPE_SUCCESS = "FETCHING_SINGLE_RECIPE_SUCCESS"
-export const FETCHING_SINGLE_RECIPE_FAIL = "FETCHING_SINGLE_RECIPE_FAIL"
+export const FETCHING_SINGLE_RECIPE_START = "FETCHING_SINGLE_RECIPE_START";
+export const FETCHING_SINGLE_RECIPE_SUCCESS = "FETCHING_SINGLE_RECIPE_SUCCESS";
+export const FETCHING_SINGLE_RECIPE_FAIL = "FETCHING_SINGLE_RECIPE_FAIL";
 
 export const getSingleRecipe = id => dispatch => {
-  dispatch({ type: FETCHING_SINGLE_RECIPE_START })
+  dispatch({ type: FETCHING_SINGLE_RECIPE_START });
   axiosWithAuth()
     .get(`recipes/${id}`)
     .then(res => {
-      dispatch({ type: FETCHING_SINGLE_RECIPE_SUCCESS, payload: res.data.recipe })
-    })
-}
+      dispatch({
+        type: FETCHING_SINGLE_RECIPE_SUCCESS,
+        payload: res.data.recipe
+      });
+    });
+};
 
 export const ADD_RECIPE_START = "ADD_RECIPE_START";
 export const ADD_RECIPE_SUCCESS = "ADD_RECIPE_SUCCESS";
@@ -36,7 +39,7 @@ export const addRecipe = newRecipe => dispatch => {
   axiosWithAuth()
     .post("recipes", newRecipe)
     .then(res => {
-      console.log(res.data)
+      console.log(res.data);
       dispatch({ type: ADD_RECIPE_SUCCESS, payload: res.data });
     })
     .catch(err => console.log(err));
@@ -51,7 +54,7 @@ export const deleteRecipe = id => dispatch => {
   axiosWithAuth()
     .delete(`recipes/${id}`)
     .then(res => {
-      console.log("delete", res)
+      console.log("delete", res);
       dispatch({ type: DELETE_RECIPE_SUCCESS, payload: res.data });
     })
     .catch(err => console.log(err));
@@ -61,12 +64,12 @@ export const UPDATE_RECIPE_START = "UPDATE_RECIPE_START";
 export const UPDATE_RECIPE_SUCCESS = "UPDATE_RECIPE_SUCCESS";
 export const UPDATE_RECIPE_FAIL = "UPDATE_RECIPE_FAIL";
 
-export const updateRecipe = id => dispatch => {
+export const updateRecipe = recipe => dispatch => {
   dispatch({ type: UPDATE_RECIPE_START });
   axiosWithAuth()
-    .push(`recipes/${id}`)
+    .put(`recipes/${recipe.id}`, recipe)
     .then(res => {
-      dispatch({ type: UPDATE_RECIPE_SUCCESS, payload: id });
+      dispatch({ type: UPDATE_RECIPE_SUCCESS, payload: res.data });
     })
     .catch(err => console.log(err));
 };
