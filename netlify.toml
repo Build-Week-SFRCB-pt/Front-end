@@ -1,0 +1,4 @@
+[build]
+base="secret-recipes"
+publish="/build/"
+command="yarn build"
