@@ -1,4 +1,4 @@
 [build]
-base="client"
-publish="secret-recipies/build/"
+base="secret-recipes"
+publish="secret-recipes/build/"
 command="yarn build"
