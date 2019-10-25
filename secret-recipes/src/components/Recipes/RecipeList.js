@@ -15,6 +15,10 @@ const RecipeList = ({ getRecipes, recipes, isFetching, history }) => {
     e.preventDefault();
     history.push(`/recipe/${recipe.id}`);
   };
+  if (recipes.length === 0) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <TabNav />

@@ -1,20 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { addRecipe } from "../../actions/index";
+import { updateRecipe, getSingleRecipe } from "../../actions/index";
 import TabNav from "../RecipeCards/TabNav";
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button } from "semantic-ui-react";
 
-const initialInput = {
-  title: "",
-  source: "",
-  notes: "",
-  ingredients: [],
-  instructions: [],
-  tags: []
-};
+// const initialInput = {
+//   title: "",
+//   source: "",
+//   notes: "",
+//   ingredients: [],
+//   instructions: [],
+//   tags: []
+// };
 
-const AddRecipe = ({ addRecipe, history }) => {
-  const [values, setValues] = useState(initialInput);
+const UpdateForm = ({
+  updateRecipe,
+  history,
+  match,
+  singleRecipe,
+  getSingleRecipe,
+  location
+}) => {
+  const [values, setValues] = useState(location.state);
+  console.log("values", values);
+  // useEffect(() => {
+  //   getSingleRecipe(match.params.id)
+  // }, [match.params.id, getSingleRecipe])
+
+  // useEffect(() => {
+  //   const recipeId = match.params.id;
+  //   const recipeToUpdate = singleRecipe.find(recipe => {
+  //     console.log(recipe)
+  //     return `${recipe.id}` === recipeId
+  //   })
+  //   if (recipeToUpdate === null) {
+  //     // getSingleRecipe(match.params.id)
+  //     setValues(recipeToUpdate)
+  //   }
+  // }, [match, values])
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -22,14 +45,19 @@ const AddRecipe = ({ addRecipe, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log(values);
     let newValues = {
       ...values,
-      ingredients: values.ingredients.split(", "),
-      instructions: values.instructions.split(", "),
-      tags: values.tags.split(", ")
-    }
-    addRecipe(newValues);
-    history.push('/recipes')
+      ingredients: Array.isArray(values.ingredients)
+        ? values.ingredients
+        : values.ingredients.split(", "),
+      instructions: Array.isArray(values.instructions)
+        ? values.instructions
+        : values.instructions.split(", "),
+      tags: Array.isArray(values.tags) ? values.tags : values.tags.split(", ")
+    };
+    updateRecipe(newValues);
+    history.push("/recipes");
   };
 
   return (
@@ -78,7 +106,7 @@ const AddRecipe = ({ addRecipe, history }) => {
           value={values.tags}
           placeholder="Example: Tag 1, Tag 2"
         />
-        <Button type="submit">Add Recipe</Button>
+        <Button type="submit">Save Recipe</Button>
       </Form>
     </div>
   );
@@ -86,11 +114,12 @@ const AddRecipe = ({ addRecipe, history }) => {
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes
+    recipes: state.recipes,
+    singleRecipe: state.singleRecipe
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addRecipe }
-)(AddRecipe);
+  { updateRecipe, getSingleRecipe }
+)(UpdateForm);
