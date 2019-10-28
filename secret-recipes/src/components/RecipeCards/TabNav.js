@@ -12,7 +12,7 @@ const createLabel = (iconName, labelText) => (
 );
 
 const recipeLabel = createLabel("heart", "Recipes");
-const aboutLabel = createLabel("question circle", "About");
+const searchLabel = createLabel("question circle", "Search");
 const signinLabel = createLabel("sign in", "Sign Out");
 const addRecipeLabel = createLabel("plus", "Add Recipe");
 
@@ -34,7 +34,7 @@ const panes = [
   },
   {
     menuItem: (
-      <Menu.Item key="about" as={Nav} to={`/about`} content={aboutLabel} />
+      <Menu.Item key="search" as={Nav} to={`/Search`} content={searchLabel} />
     )
   },
   {

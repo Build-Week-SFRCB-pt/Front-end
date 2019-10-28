@@ -10,6 +10,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import AddRecipe from "./components/Recipes/AddRecipe.js";
 import Recipe from "./components/Recipes/Recipe.js";
 import UpdateForm from "./components/Recipes/UpdateForm";
+import Search from "./components/Search/Search";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <PrivateRoute exact path="/recipes" component={RecipeList} />
           <PrivateRoute exact path="/recipe/:id" component={Recipe} />
           <PrivateRoute path="/add-recipe" component={AddRecipe} />
+          <PrivateRoute path="/search" component={Search} />
           <PrivateRoute exact path="/recipe/:id/edit" component={UpdateForm} />
         </main>
 
