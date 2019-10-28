@@ -5,7 +5,13 @@ import SearchForm from "./SearchForm.js";
 import Recipes from "../Recipes/Recipes";
 import TabNav from "../RecipeCards/TabNav";
 import { Loader } from "semantic-ui-react";
-// import styled from "styled-components";
+import styled from "styled-components";
+
+const SearchStyle = styled.div`
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+`;
 
 const fuseOptions = {
   shouldSort: true,
@@ -57,7 +63,7 @@ const SearchTag = () => {
         }
       );
       setSearchRecipes(res.data);
-      setFetching(false);
+      // setFetching(false);
     };
     axiosCall();
   }, []);
@@ -78,26 +84,28 @@ const SearchTag = () => {
   return (
     <div>
       <TabNav />
-      <SearchForm recipes={searchRecipes} searchHandler={searchHandler} />
-      {isFetching ? (
-        <div style={{ textAlign: "center" }}>
-          Searching for food...
-          <Loader active inline="centered" />
-        </div>
-      ) : (
-        <div className="Search-Container">
-          {/* {searchRecipes.recipes.map(recipe => (
-            <Recipes
-              searchRecipes={searchRecipes}
-              title={recipe.title}
-              source={recipe.source}
-              notes={recipe.notes}
-              tags={recipe.tags}
-              key={recipe.id}
-            />
-          ))} */}
-        </div>
-      )}
+      <div className="Search">
+        <SearchForm recipes={searchRecipes} searchHandler={searchHandler} />
+        {isFetching ? (
+          <div style={{ textAlign: "center" }}>
+            Searching for food...
+            <Loader active inline="centered" />
+          </div>
+        ) : (
+          <div className="Search-Container">
+            {searchRecipes.recipes.map(recipe => (
+              <Recipes
+              // searchRecipes={searchRecipes}
+              // title={recipe.title}
+              // source={recipe.source}
+              // notes={recipe.notes}
+              // tags={recipe.tags}
+              // key={recipe.id}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

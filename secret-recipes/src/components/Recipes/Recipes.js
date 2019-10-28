@@ -1,14 +1,6 @@
 import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import "./Recipes.css";
-import styled from "styled-components";
-
-const StyledTags = styled.p`
-  background: red;
-  border: 1px solid black;
-  border-radius: 10px;
-  width: inherit;
-`;
 
 const Recipes = ({ recipe }) => {
   return (

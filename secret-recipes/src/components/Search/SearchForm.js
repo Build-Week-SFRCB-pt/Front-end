@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { SEARCH } from "semantic-ui-react";
 
-// const FormStyling = styled.form`
-//   margin-bottom: 20px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-// `;
+const FormStyling = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 40px;
+`;
+
+const InputStyling = styled.input`
+  margin-right: 5px;
+`;
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState("");
@@ -28,14 +32,14 @@ const Search = props => {
   // };
 
   return (
-    <form className="search">
-      <input
+    <FormStyling className="search">
+      <InputStyling
         value={searchValue}
         onChange={handleSearchInputChanges}
         type="text"
       />
       <input type="submit" value="SEARCH" />
-    </form>
+    </FormStyling>
   );
 };
 
